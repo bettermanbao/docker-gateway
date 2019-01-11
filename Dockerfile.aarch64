@@ -1,0 +1,9 @@
+FROM arm64v8/alpine:3.8
+
+RUN ["cross-build-start"]
+RUN apk --no-cache --no-progress upgrade && \
+    apk --no-cache --no-progress add iptables && \
+    rm -rf /tmp/*
+RUN ["cross-build-end"]
+
+ENTRYPOINT ["/init.sh"]
