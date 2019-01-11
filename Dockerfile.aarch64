@@ -1,9 +1,23 @@
 FROM arm64v8/alpine:3.8
 
+COPY init.sh /
+
 RUN ["cross-build-start"]
+RUN chmod +x /init.sh
+
 RUN apk --no-cache --no-progress upgrade && \
     apk --no-cache --no-progress add iptables && \
     rm -rf /tmp/*
+    
+RUN mkdir /v2ray && \
+    cd /v2ray && \
+    wget https://github.com/v2ray/v2ray-core/releases/download/v4.11.0/v2ray-linux-arm64.zip && \
+    unzip v2ray-linux-arm64.zip && \
+    rm config.json v2ray-linux-arm64.zip && \
+    chmod +x v2ray v2ctl
+
 RUN ["cross-build-end"]
+
+COPY config.json /v2ray/
 
 ENTRYPOINT ["/init.sh"]
