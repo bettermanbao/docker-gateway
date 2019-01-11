@@ -5,6 +5,8 @@ COPY init.sh /
 RUN ["cross-build-start"]
 RUN chmod +x /init.sh
 
+RUN echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/01-ip_forward.conf
+
 RUN apk --no-cache --no-progress upgrade && \
     apk --no-cache --no-progress add iptables && \
     rm -rf /tmp/*
