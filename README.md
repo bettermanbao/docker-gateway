@@ -4,6 +4,10 @@ docker network create -d macvlan --subnet=192.168.2.0/24 --gateway=192.168.2.1 -
 
 docker run -d --name gateway --network macnet --ip 192.168.2.2 --privileged bettermanbao/docker-gateway:aarch64 address port method password
 
+or
+
+docker run -d --name gateway --network macnet --ip 192.168.2.2 --privileged bettermanbao/docker-gateway:x86_64 address port method password
+
 ## Supported method:
 aes-256-cfb
 
