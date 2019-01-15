@@ -8,16 +8,16 @@ docker run -d --name gateway --network macnet --ip 192.168.2.2 --privileged  -v 
 ```
 {
     "server": "server address",
-    "local_address": "127.0.0.1",
-    "local_port": 1080,
-    "timeout": 300,
-    "workers": 1,
     "server_port": port,
     "password": "password",
     "method": "method",
     "obfs": "obfs",
     "obfs_param": "obfs_param",
     "protocol": "protocol",
-    "protocol_param": "protocol_param"
+    "protocol_param": "protocol_param",
+    "local_address": "0.0.0.0",
+    "local_port": 1080,
+    "timeout": 300,
+    "workers": 1
 }
 ```
