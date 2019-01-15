@@ -1,7 +1,7 @@
 FROM balenalib/aarch64-alpine
 
 COPY init.sh /
-COPY ssr-local /
+COPY ssr-local /root
 
 RUN ["cross-build-start"]
 RUN chmod +x /init.sh
