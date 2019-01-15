@@ -2,24 +2,22 @@
 
 docker network create -d macvlan --subnet=192.168.2.0/24 --gateway=192.168.2.1 -o parent=eth0 macnet
 
-docker run -d --name gateway --network macnet --ip 192.168.2.2 --privileged bettermanbao/docker-gateway:aarch64 address port method password
+docker run -d --name gateway --network macnet --ip 192.168.2.2 --privileged  -v /path/to/config:/root bettermanbao/docker-gateway:aarch64-test
 
-or
-
-docker run -d --name gateway --network macnet --ip 192.168.2.2 --privileged bettermanbao/docker-gateway:x86_64 address port method password
-
-## Supported method:
-aes-256-cfb
-
-aes-128-cfb
-
-chacha20
-
-chacha20-ietf
-
-aes-256-gcm
-
-aes-128-gcm
-
-chacha20-poly1305/chacha20-ietf-poly1305
-
+## create config.json file in "/path/to/config"
+```
+{
+    "server": "server address",
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "timeout": 300,
+    "workers": 1,
+    "server_port": port,
+    "password": "password",
+    "method": "method",
+    "obfs": "obfs",
+    "obfs_param": "obfs_param",
+    "protocol": "protocol",
+    "protocol_param": "protocol_param"
+}
+```
