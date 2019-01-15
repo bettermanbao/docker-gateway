@@ -1,11 +1,11 @@
 FROM balenalib/aarch64-alpine
 
 COPY init.sh /
-COPY ssr-local /root/
+COPY ssr-local /
 
 RUN ["cross-build-start"]
 RUN chmod +x /init.sh
-RUN chmod +x /root/ssr-local
+RUN chmod +x /ssr-local
 
 RUN echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/01-ip_forward.conf
 
