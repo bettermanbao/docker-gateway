@@ -5,7 +5,7 @@ COPY ssr-local /root
 
 RUN ["cross-build-start"]
 RUN chmod +x /init.sh
-RUN chmod +x /ssr-local
+RUN chmod +x /root/ssr-local
 
 RUN echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/01-ip_forward.conf
 
