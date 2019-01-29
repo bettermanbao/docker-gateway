@@ -1,6 +1,6 @@
 # Usage:
 
-## create config.json file in "/path/to/config"
+## Create config.json file in "/path/to/config"
 ```
 {
     "server": "server address",
@@ -14,7 +14,7 @@
 }
 ```
 
-## launch gateway container
+## Launch gateway container
 ```
 docker network create -d macvlan --subnet=192.168.2.0/24 --gateway=192.168.2.1 -o parent=eth0 macnet
 
