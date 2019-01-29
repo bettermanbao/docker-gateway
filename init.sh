@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "nameserver 114.114.114.114" > /etc/resolv.conf
+
 ipset restore -f /chnlist.ipset
 
 iptables -t nat -A PREROUTING -p tcp -d $(ifconfig eth0 | awk '/inet addr/{print substr($2,6)}')/16 -j RETURN
