@@ -1,5 +1,11 @@
 # Usage:
 
+## Add ipset support for armbian 3.14.29 kenel (No need for 4.x kernel)
+```
+wget https://github.com/bettermanbao/docker-gateway/raw/master/ipset.tar.gz
+tar zxvf ipset.tar.gz -C /lib/modules/3.14.29/kernel/net/netfilter && depmod -a
+```
+
 ## Create config.json file in "/path/to/config"
 ```
 {
